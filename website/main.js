@@ -44,11 +44,13 @@
   ];
   var modesRoot = document.querySelector('[data-demo="modes"]');
   var tabs = Array.prototype.slice.call(modesRoot.querySelectorAll("[data-mode]"));
+  var thumb = modesRoot.querySelector(".seg-thumb");
   var currentMode = 1;
   var pausedUntil = 0;
   function showMode(i) {
     currentMode = i;
     tabs.forEach(function (t, j) { t.setAttribute("aria-selected", String(i === j)); });
+    thumb.style.setProperty("--i", i);
     Array.prototype.forEach.call(modesRoot.querySelectorAll("[data-r]"), function (em) {
       var text = MODE_TEXT[i][Number(em.getAttribute("data-r"))];
       em.textContent = text;
@@ -65,24 +67,42 @@
   // ---- demo engine ------------------------------------------------------------------
   function Demo(root, build, hold) {
     var timers = [];
+    var frames = [];
     var playing = false;
     function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
-    function run() {
+    // Runs fn on every animation frame until it returns false.
+    function frame(fn) {
+      function step(now) { if (fn(now)) frames.push(requestAnimationFrame(step)); }
+      frames.push(requestAnimationFrame(step));
+    }
+    function clear() {
       timers.forEach(clearTimeout);
+      frames.forEach(cancelAnimationFrame);
       timers = [];
-      var total = build(root, later);
+      frames = [];
+    }
+    function run() {
+      clear();
+      var total = build(root, later, frame);
       later(total + hold, run);
     }
     this.start = function () { if (!playing) { playing = true; run(); } };
-    this.stop = function () { playing = false; timers.forEach(clearTimeout); timers = []; };
+    this.stop = function () { playing = false; clear(); };
   }
 
-  // Types text into a node from `start` ms; returns the time it finishes.
-  function typeText(node, text, start, later, speed) {
+  // Types text into a node starting at `start` ms, on animation frames, so the
+  // page writes to the DOM at most once per frame. Returns the finish time.
+  function typeText(node, text, start, later, frame, speed) {
     node.textContent = "";
-    for (var i = 1; i <= text.length; i++) {
-      (function (n) { later(start + n * speed, function () { node.textContent = text.slice(0, n); }); })(i);
-    }
+    later(start, function () {
+      var t0 = performance.now();
+      var shown = 0;
+      frame(function (now) {
+        var n = Math.min(text.length, Math.floor((now - t0) / speed) + 1);
+        if (n !== shown) { shown = n; node.textContent = text.slice(0, n); }
+        return n < text.length;
+      });
+    });
     return start + text.length * speed;
   }
 
@@ -115,7 +135,7 @@
     },
 
     // Newsletters get archived one by one; the reply types itself and counts down.
-    inbox: function (r, later) {
+    inbox: function (r, later, frame) {
       var noise = $$(r, ".noise");
       var keep = r.querySelector(".keep");
       var count = r.querySelector("[data-count]");
@@ -135,7 +155,7 @@
         });
       });
       t += noise.length * 700 + 300;
-      t = typeText(text, text.getAttribute("data-type"), t, later, 30);
+      t = typeText(text, text.getAttribute("data-type"), t, later, frame, 30);
       for (var s = 5; s >= 1; s--) {
         (function (left, at) { later(at, function () { countdown.textContent = "Sending in " + left + "s"; }); })(s, t + (5 - s) * 800);
       }
@@ -148,7 +168,7 @@
     },
 
     // Fields fill one at a time; the final click waits for you.
-    browser: function (r, later) {
+    browser: function (r, later, frame) {
       var fields = $$(r, ".field[data-value]");
       var chip = r.querySelector("[data-chip]");
       var submit = r.querySelector("[data-submit]");
@@ -159,7 +179,7 @@
       var t = 800;
       fields.forEach(function (f) {
         later(t, function () { f.classList.add("active"); });
-        t = typeText(f.querySelector(".val"), f.getAttribute("data-value"), t + 300, later, 36);
+        t = typeText(f.querySelector(".val"), f.getAttribute("data-value"), t + 300, later, frame, 36);
         later(t + 200, function () { f.classList.remove("active"); });
         t += 450;
       });
@@ -172,7 +192,7 @@
     },
 
     // The lease fills in by hand; the SSN line stays blank on purpose.
-    form: function (r, later) {
+    form: function (r, later, frame) {
       var lines = $$(r, ".line[data-value]");
       var saved = r.querySelector("[data-saved]");
       lines.forEach(function (l) { l.querySelector(".ink").textContent = ""; });
@@ -180,7 +200,7 @@
       saved.textContent = "Filling in 4 fields";
       var t = 700;
       lines.forEach(function (l) {
-        t = typeText(l.querySelector(".ink"), l.getAttribute("data-value"), t, later, 34) + 250;
+        t = typeText(l.querySelector(".ink"), l.getAttribute("data-value"), t, later, frame, 34) + 250;
       });
       later(t + 300, function () {
         saved.classList.add("done");
