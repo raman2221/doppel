@@ -1,0 +1,86 @@
+{
+  "name": "doppel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A desktop twin that handles your inbox, browser errands, forms, and reminders, with your approval.",
+  "type": "module",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --import ./test/helpers/register.js --test test/*.test.js",
+    "dist:mac": "electron-builder --mac dmg --arm64",
+    "dist:win": "electron-builder --win nsis --x64",
+    "icon": "node scripts/make-icon.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.3.0",
+    "dompurify": "^3.4.17",
+    "imapflow": "^2.9.1",
+    "mailparser": "^3.12.4",
+    "marked": "^18.1.2",
+    "nodemailer": "^10.2.1",
+    "pdf-lib": "^1.17.1",
+    "playwright-core": "^1.64.1"
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "tech.doppel.app",
+    "productName": "Doppel",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "node_modules/playwright-core/**"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "minimumSystemVersion": "12.0",
+      "artifactName": "Doppel-mac-arm64.${ext}"
+    },
+    "dmg": {
+      "title": "Doppel"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Doppel-windows-x64-setup.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    }
+  },
+  "author": {
+    "name": "Ramanjeet Singh"
+  },
+  "homepage": "https://raman2221.github.io/doppel/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raman2221/doppel.git"
+  }
+}

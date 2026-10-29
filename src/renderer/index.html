@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doppel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="rail" aria-label="Main">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"><i></i><i></i></span>
+        <span class="brand-name">Doppel</span>
+      </div>
+      <a class="nav-item" href="#tasks" data-view="tasks">Tasks</a>
+      <a class="nav-item" href="#memory" data-view="memory">Memory</a>
+      <a class="nav-item" href="#reminders" data-view="reminders">Reminders</a>
+      <a class="nav-item" href="#activity" data-view="activity">Activity</a>
+      <a class="nav-item" href="#settings" data-view="settings">Settings</a>
+      <div class="rail-foot" id="rail-foot"></div>
+    </nav>
+    <main class="main" id="main"></main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="../../node_modules/marked/lib/marked.umd.js"></script>
+  <script src="../../node_modules/dompurify/dist/purify.min.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
