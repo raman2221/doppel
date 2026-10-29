@@ -9,9 +9,6 @@
   <meta property="og:description" content="Your second you: a desktop twin that handles your inbox, forms, and errands, with your approval.">
   <meta name="theme-color" content="#2f7cf6">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -39,6 +36,13 @@
       </div>
 
       <div class="wrap wrap-wide">
+        <!-- A desktop with a Golden Gate wallpaper; the Doppel window sits on it. -->
+        <div class="desk">
+        <div class="menubar" aria-hidden="true">
+          <span class="menubar-app"><span class="logo-d logo-d-xs">D</span>Doppel</span>
+          <span class="menubar-item">File</span><span class="menubar-item">Edit</span><span class="menubar-item">View</span>
+          <span class="menubar-clock" data-clock>Tue 9:00 AM</span>
+        </div>
         <div class="app" data-demo="hero" role="img" aria-label="Doppel taking a request and working through it step by step">
           <div class="app-bar"><span class="lights"><i></i><i></i><i></i></span><span class="app-title">Doppel</span></div>
           <div class="app-body">
@@ -47,18 +51,21 @@
               <span class="rail-item on">Tasks</span><span class="rail-item">Memory</span><span class="rail-item">Reminders</span><span class="rail-item">Activity</span><span class="rail-item">Settings</span>
             </aside>
             <div class="app-main">
-              <div class="app-command"><span data-type="Clear my inbox and reply to anything that needs me">Clear my inbox and reply to anything that needs me</span><span class="caret"></span></div>
+              <div class="app-command"><span>Clear my inbox and reply to anything that needs me</span><span class="caret"></span></div>
               <div class="app-steps">
-                <p class="step" data-step="1">Reading your inbox. 41 unread, and 29 are newsletters or receipts.</p>
-                <p class="step tool" data-step="2"><b>Done</b> Archived 29 emails <em>Undo for 30 min</em></p>
-                <p class="step tool" data-step="3"><b>Done</b> Drafted 3 replies in your voice</p>
-                <div class="step approve" data-step="4">
+                <p class="app-note">41 unread. 29 are newsletters and receipts, so those get archived. Three need a reply from you.</p>
+                <p class="tool" data-tool><b>Done</b><span>Archived 29 emails</span><em>Undo for 30 min</em></p>
+                <p class="tool" data-tool><b>Done</b><span>Drafted 3 replies in your voice</span></p>
+                <p class="tool" data-tool><b>Done</b><span>Saved Dana's birthday, March 3, to memory</span></p>
+                <div class="approve sent" data-approve>
                   <div><strong>Send to Dana Park</strong><span>“hey! thursday works. 6:30 at the usual place?”</span></div>
-                  <span class="approve-btns"><span class="b-ghost">Cancel</span><span class="b-blue">Send</span></span>
+                  <span class="approve-btns"><span class="approve-state" data-state>Sent</span><span class="b-ghost">Cancel</span><span class="b-blue" data-send>Send</span></span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="dock" aria-hidden="true"><i></i><i></i><i class="dock-doppel"><span class="logo-d">D</span></i><i></i><i></i></div>
         </div>
       </div>
     </section>
@@ -74,12 +81,12 @@
         <div class="demo" data-demo="inbox" aria-label="Doppel archiving newsletters and drafting a reply">
           <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span><span>Inbox</span><span class="demo-count" data-count>1 unread</span></div>
           <ul class="mail">
-            <li class="noise gone"><span class="avatar">W</span><b>Weekly Digest</b><span>Your top stories this week</span></li>
-            <li class="keep"><span class="avatar a-blue">D</span><b>Dana Park</b><span>Are we still on for Thursday?</span></li>
-            <li class="noise gone"><span class="avatar">R</span><b>Receipts</b><span>Your order has shipped</span></li>
-            <li class="noise gone"><span class="avatar">S</span><b>Spring Sale</b><span>40% off ends tonight</span></li>
+            <li class="noise archived"><span class="avatar">W</span><b>Weekly Digest</b><span>Your top stories this week</span><em>Archived</em></li>
+            <li class="keep"><span class="avatar a-blue">D</span><b>Dana Park</b><span>Are we still on for Thursday?</span><em>Replied</em></li>
+            <li class="noise archived"><span class="avatar">R</span><b>Receipts</b><span>Your order has shipped</span><em>Archived</em></li>
+            <li class="noise archived"><span class="avatar">S</span><b>Spring Sale</b><span>40% off ends tonight</span><em>Archived</em></li>
           </ul>
-          <div class="compose show">
+          <div class="compose">
             <div class="compose-meta">To Dana Park · Re: Thursday?</div>
             <p class="compose-text" data-type="hey! thursday works. 6:30 at the usual place? i'll grab the table">hey! thursday works. 6:30 at the usual place? i'll grab the table</p>
             <div class="compose-foot"><span class="countdown sent" data-countdown>Sent</span><span class="b-ghost">Cancel</span></div>
@@ -99,11 +106,11 @@
           <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span><span class="url">reservations.example.com/lucia</span></div>
           <div class="site">
             <p class="site-title">Lucia · Table for 2</p>
-            <div class="field done" data-value="Fri, Nov 6 · 7:00 PM"><label>Date and time</label><span class="val">Fri, Nov 6 · 7:00 PM</span></div>
-            <div class="field done" data-value="Alex Rivera"><label>Name</label><span class="val">Alex Rivera</span></div>
-            <div class="field done" data-value="alex@example.com"><label>Email</label><span class="val">alex@example.com</span></div>
-            <div class="field locked show"><label>Account password</label><span class="val">Left for you</span></div>
-            <div class="site-foot show"><span class="fake-submit">Reserve</span><span class="chip-wait">Waiting for your OK</span></div>
+            <div class="field" data-value="Fri, Nov 6 · 7:00 PM"><label>Date and time</label><span class="val" data-placeholder="Choose a time">Fri, Nov 6 · 7:00 PM</span></div>
+            <div class="field" data-value="Alex Rivera"><label>Name</label><span class="val" data-placeholder="Your name">Alex Rivera</span></div>
+            <div class="field" data-value="alex@example.com"><label>Email</label><span class="val" data-placeholder="you@email.com">alex@example.com</span></div>
+            <div class="field locked"><label>Account password</label><span class="val">Left for you to enter</span></div>
+            <div class="site-foot"><span class="fake-submit" data-submit>Reserve</span><span class="chip waiting" data-chip>Waiting for your OK</span></div>
           </div>
         </div>
       </div>
@@ -119,13 +126,13 @@
         <div class="demo demo-paper" data-demo="form" aria-label="Doppel filling a PDF lease application and leaving the SSN blank">
           <div class="sheet">
             <p class="sheet-title">Residential Lease Application</p>
-            <div class="line done" data-value="Alex Rivera"><label>Full name</label><span class="ink">Alex Rivera</span></div>
-            <div class="line done" data-value="412 Elm St, Ann Arbor, MI"><label>Current address</label><span class="ink">412 Elm St, Ann Arbor, MI</span></div>
-            <div class="line done" data-value="(734) 555-0199"><label>Phone</label><span class="ink">(734) 555-0199</span></div>
-            <div class="line done" data-value="Northside Clinic"><label>Employer</label><span class="ink">Northside Clinic</span></div>
-            <div class="line locked show"><label>Social Security No.</label><span class="ink">Left blank for you</span></div>
+            <div class="line" data-value="Alex Rivera"><label>Full name</label><span class="ink">Alex Rivera</span></div>
+            <div class="line" data-value="412 Elm St, Ann Arbor, MI"><label>Current address</label><span class="ink">412 Elm St, Ann Arbor, MI</span></div>
+            <div class="line" data-value="(734) 555-0199"><label>Phone</label><span class="ink">(734) 555-0199</span></div>
+            <div class="line" data-value="Northside Clinic"><label>Employer</label><span class="ink">Northside Clinic</span></div>
+            <div class="line locked"><label>Social Security No.</label><span class="ink">Left blank for you</span></div>
           </div>
-          <div class="saved show">Saved “lease (filled).pdf”</div>
+          <div class="saved done" data-saved>Saved “lease (filled).pdf”</div>
         </div>
       </div>
     </section>
@@ -138,14 +145,14 @@
           <p>Birthdays, renewals, and follow-ups, with a nudge a few days ahead. A reminder can even run the task itself when it comes due.</p>
         </div>
         <div class="demo demo-desk" data-demo="memory" aria-label="A desktop notification about an upcoming birthday, above a list of reminders">
-          <div class="toast show">
+          <div class="toast" data-toast>
             <span class="logo-d logo-d-sm">D</span>
-            <div><strong>Mom's birthday is Friday</strong><span>Want me to order flowers from the usual shop?</span></div>
+            <div><strong data-toast-title>Mom's birthday is Friday</strong><span data-toast-body>Want me to order flowers from the usual shop?</span></div>
           </div>
           <ul class="dates">
-            <li class="show"><b>Fri</b><span>Mom's birthday</span><em>Family</em></li>
-            <li class="show"><b>Tue</b><span>Follow up with the landlord</span><em>Doppel will draft it</em></li>
-            <li class="show"><b>May 1</b><span>Renew car registration</span><em>Every year</em></li>
+            <li class="hl"><b>Fri</b><span>Mom's birthday</span><em>Family</em></li>
+            <li><b>Tue</b><span>Follow up with the landlord</span><em>Doppel drafts it</em></li>
+            <li><b>May 1</b><span>Renew car registration</span><em>Every year</em></li>
           </ul>
         </div>
       </div>
