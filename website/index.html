@@ -4,272 +4,236 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Doppel</title>
-  <meta name="description" content="Doppel is a desktop twin for Mac and Windows. It clears your inbox, fills your forms, and runs your browser errands in your voice, and asks before anything leaves your computer.">
+  <meta name="description" content="Doppel is a desktop twin for Mac and Windows. It clears your inbox, fills out forms, and runs web errands in your voice, and asks before anything leaves your computer.">
   <meta property="og:title" content="Doppel">
-  <meta property="og:description" content="A desktop twin that handles your inbox, forms, and errands, in your voice, on your own computer.">
-  <meta name="theme-color" content="#ffffff">
+  <meta property="og:description" content="Your second you: a desktop twin that handles your inbox, forms, and errands, with your approval.">
+  <meta name="theme-color" content="#2f7cf6">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <a class="logo" href="#top" aria-label="Doppel home"><span class="mark" aria-hidden="true"><i></i><i></i></span>Doppel</a>
+      <a class="brand" href="#top" aria-label="Doppel home"><span class="logo-d">D</span><span class="brand-word">Doppel</span></a>
       <nav class="nav-links" aria-label="Sections">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#control">Control</a>
-        <a href="#trust">Safety</a>
+        <a href="#inbox">Features</a>
+        <a href="#safety">Safety</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="pill pill-dark pill-small" href="#download">Download</a>
+      <a class="btn btn-blue btn-sm" href="#get">Download</a>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
+    <!-- Hero: sky, one line, one button, the product -->
     <section class="hero">
-      <div class="sky" aria-hidden="true"></div>
+      <div class="hero-sky" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span></div>
       <div class="wrap hero-copy">
-        <p class="eyebrow">Doppel for Mac and Windows</p>
         <h1>Your second you.</h1>
-        <p class="lede">The desktop twin that clears your inbox, fills your forms, and runs your errands, in your voice, on your own computer.</p>
-        <div class="cta-row">
-          <a class="pill pill-dark" id="hero-download" href="#download"><span class="os-glyph" aria-hidden="true"></span><span id="hero-download-label">Download Doppel</span></a>
-          <a class="chevron-link" href="#how">See how it works</a>
-        </div>
-        <p class="fine">Free and open source. Apple Silicon Macs and Windows 10 or later.</p>
+        <p class="hero-sub">Doppel is a desktop twin that clears your inbox, fills out forms, and runs web errands in your voice. It asks before anything leaves your computer.</p>
+        <a class="btn btn-blue btn-lg" id="primary-download" href="#get"><span id="primary-label">Download Doppel</span></a>
+        <p class="hero-fine" id="secondary-line">For Mac and Windows · Free and open source</p>
       </div>
 
-      <div class="wrap stage">
-        <div class="window" role="img" aria-label="The Doppel app clearing an inbox and asking before it sends a reply">
-          <div class="titlebar"><span class="lights"><i></i><i></i><i></i></span><span>Doppel</span></div>
-          <div class="win-body">
-            <aside class="win-rail">
-              <span class="rail-brand"><span class="mark mark-sm"><i></i><i></i></span>Doppel</span>
-              <span class="rail-item active">Tasks</span>
-              <span class="rail-item">Memory</span>
-              <span class="rail-item">Reminders</span>
-              <span class="rail-item">Activity</span>
-              <span class="rail-item">Settings</span>
-              <span class="rail-mode"><i></i>Ask before it ships</span>
+      <div class="wrap wrap-wide">
+        <div class="app" data-demo="hero" role="img" aria-label="Doppel taking a request and working through it step by step">
+          <div class="app-bar"><span class="lights"><i></i><i></i><i></i></span><span class="app-title">Doppel</span></div>
+          <div class="app-body">
+            <aside class="app-rail">
+              <span class="rail-logo"><span class="logo-d logo-d-sm">D</span>Doppel</span>
+              <span class="rail-item on">Tasks</span><span class="rail-item">Memory</span><span class="rail-item">Reminders</span><span class="rail-item">Activity</span><span class="rail-item">Settings</span>
             </aside>
-            <div class="win-main">
-              <div class="win-command">Clear my inbox and reply to anything that needs me</div>
-              <div class="win-timeline">
-                <p class="win-text">You have 41 unread. 29 are newsletters and receipts, so I'm archiving those.</p>
-                <p class="win-tool"><b>done</b><code>email_list</code>41 messages</p>
-                <p class="win-tool"><b>done</b><code>email_archive</code>29 emails</p>
-                <p class="win-text">Dana asked about Thursday. Here's a reply in your voice:</p>
-                <div class="win-approval">
-                  <div class="win-approval-head"><strong>Send email to Dana Park</strong><span class="tag">Leaves your computer</span></div>
-                  <div class="win-mail">
-                    <div class="win-mail-meta"><span>Subject</span>Re: Thursday?</div>
-                    <p>hey! thursday works. 6:30 at the usual place? i'll grab the table</p>
-                  </div>
-                  <div class="win-actions"><span class="countdown" id="hero-countdown">Sending in 5s</span><span class="ghost-btn">Cancel</span><span class="solid-btn">Send now</span></div>
+            <div class="app-main">
+              <div class="app-command"><span data-type="Clear my inbox and reply to anything that needs me">Clear my inbox and reply to anything that needs me</span><span class="caret"></span></div>
+              <div class="app-steps">
+                <p class="step" data-step="1">Reading your inbox. 41 unread, and 29 are newsletters or receipts.</p>
+                <p class="step tool" data-step="2"><b>Done</b> Archived 29 emails <em>Undo for 30 min</em></p>
+                <p class="step tool" data-step="3"><b>Done</b> Drafted 3 replies in your voice</p>
+                <div class="step approve" data-step="4">
+                  <div><strong>Send to Dana Park</strong><span>“hey! thursday works. 6:30 at the usual place?”</span></div>
+                  <span class="approve-btns"><span class="b-ghost">Cancel</span><span class="b-blue">Send</span></span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="float float-a" aria-hidden="true"><span class="dot"></span>Saved: Dana's birthday is March 3</div>
-        <div class="float float-b" aria-hidden="true"><span class="dot dot-amber"></span>Undo archive · 30 min left</div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section class="band gray" id="features">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow">What it handles</p>
-          <h2>Everything you'd rather not do.<br><span class="soft">Done the way you'd do it.</span></h2>
-        </header>
-
-        <div class="bento">
-          <article class="tile tile-wide">
-            <div class="tile-copy">
-              <h3>Inbox, in your voice.</h3>
-              <p>Doppel reads your sent mail once and learns how you write: your greetings, your sign-offs, how short you keep things. Then it archives the noise and drafts replies people can't tell apart from yours.</p>
-            </div>
-            <div class="voice">
-              <div class="voice-card generic"><span class="voice-label">Typical AI</span>I hope this message finds you well. Thursday works wonderfully for me. Please let me know if 6:30 PM is convenient for you.</div>
-              <div class="voice-card yours"><span class="voice-label">Doppel, as you</span>hey! thursday works. 6:30 at the usual place? i'll grab the table</div>
-            </div>
-          </article>
-
-          <article class="tile">
-            <h3>Errands, start to finish.</h3>
-            <p>It works websites like a person: fields by their labels, buttons by their words. It checks the page after every step.</p>
-            <ul class="mini-form">
-              <li><span>Email</span><em class="ok">filled</em></li>
-              <li><span>Delivery address</span><em class="ok">filled</em></li>
-              <li><span>Password</span><em class="you">left for you</em></li>
-              <li><span>Place order</span><em class="wait">waits for you</em></li>
-            </ul>
-          </article>
-
-          <article class="tile">
-            <h3>Forms that fill themselves.</h3>
-            <p>Drop in a PDF. Doppel fills it from what it knows and saves a copy, leaving the original untouched.</p>
-            <ul class="mini-form">
-              <li><span>Full name</span><em class="ok">Alex Rivera</em></li>
-              <li><span>Address</span><em class="ok">412 Elm St</em></li>
-              <li><span>SSN</span><em class="you">never typed</em></li>
-            </ul>
-          </article>
-
-          <article class="tile">
-            <h3>It remembers for you.</h3>
-            <p>Birthdays, renewals, and follow-ups, with a heads-up before they sneak up on you. A reminder can even do the task itself.</p>
-            <ul class="mini-dates">
-              <li><b>Fri</b>Mom's birthday</li>
-              <li><b>Tue</b>Follow up with the landlord</li>
-              <li><b>May 1</b>Renew car registration</li>
-            </ul>
-          </article>
-
-          <article class="tile tile-dark">
-            <p class="big-stat">8 GB</p>
-            <h3>Made for a MacBook Air.</h3>
-            <p>Native on Apple Silicon. The errand browser closes itself when it's idle, and closing the window frees its memory while Doppel keeps working from the menu bar.</p>
-          </article>
+    <!-- Feature demos -->
+    <section class="feature" id="inbox">
+      <div class="wrap feature-row">
+        <div class="feature-copy">
+          <p class="kicker">Inbox</p>
+          <h2>Replies that sound<br>like you.</h2>
+          <p>Doppel learns how you write from your sent mail, archives the noise, and drafts the rest. Every send waits for you, or gives you five seconds to cancel.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="band" id="how">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow">How it works</p>
-          <h2>Ten minutes to set up.<br><span class="soft">Then just say what you need.</span></h2>
-        </header>
-        <ol class="steps">
-          <li>
-            <span class="step-num">1</span>
-            <h3>Connect once</h3>
-            <p>Add a Claude API key, connect your email with an app password, and let Doppel read your sent mail to learn your style.</p>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <h3>Ask in one line</h3>
-            <p>“Clear my inbox.” “Fill out this lease.” “Find a table for two on Friday.” No prompt writing. It plans the steps itself.</p>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <h3>Stay in the loop</h3>
-            <p>Watch every step as it happens. Approve what matters, stop it any time, and resume later without anything being sent twice.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Approval modes -->
-    <section class="band dark" id="control">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow">Control</p>
-          <h2>You decide how much<br>it does on its own.</h2>
-        </header>
-        <div class="modes" role="tablist" aria-label="Approval modes">
-          <button class="mode" role="tab" aria-selected="false" data-mode="0">
-            <span class="mode-name">Ask me every time</span>
-            <span class="mode-desc">Every action that changes anything waits for your OK.</span>
-          </button>
-          <button class="mode" role="tab" aria-selected="true" data-mode="1">
-            <span class="mode-name">Ask before it ships <span class="badge">Default</span></span>
-            <span class="mode-desc">Changes on your computer go ahead. Anything leaving it, like an email or a web form, waits for you.</span>
-          </button>
-          <button class="mode" role="tab" aria-selected="false" data-mode="2">
-            <span class="mode-name">Don't ask</span>
-            <span class="mode-desc">Doppel acts on its own. Emails show for five seconds first, so you can still cancel.</span>
-          </button>
-        </div>
-        <p class="always">In every mode, <strong>payments</strong> and <strong>messages to family</strong> wait for you.</p>
-      </div>
-    </section>
-
-    <!-- Trust -->
-    <section class="band gray" id="trust">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow">Safety</p>
-          <h2>Trust is the feature.</h2>
-        </header>
-        <div class="trust-grid">
-          <article class="trust"><h3>Never types your secrets</h3><p>Social Security numbers, passwords, and card or bank numbers are always left for you, in forms, on websites, and in memory.</p></article>
-          <article class="trust"><h3>Stops at checkout</h3><p>It finds the item and fills in the details, then tells you what's in the cart and the total. You pay.</p></article>
-          <article class="trust"><h3>30-minute undo</h3><p>Archived mail, saved drafts, filled forms, reminders, and memory changes can all be reversed.</p></article>
-          <article class="trust"><h3>A log that can't be quietly edited</h3><p>Every action is chained to the one before it with SHA-256. One click checks that nothing was changed.</p></article>
-          <article class="trust"><h3>Keys stay in your keychain</h3><p>Your API key and email password are encrypted by your operating system and kept out of every prompt.</p></article>
-          <article class="trust"><h3>Your data stays home</h3><p>Memory, tasks, and history live on your computer. Only the task you're working on is sent to Claude.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Download -->
-    <section class="band" id="download">
-      <div class="wrap">
-        <div class="download">
-          <div class="sky sky-soft" aria-hidden="true"></div>
-          <header class="section-head center">
-            <span class="mark mark-lg" aria-hidden="true"><i></i><i></i></span>
-            <h2>Get Doppel.</h2>
-            <p class="lede">Free and open source. Bring your own Claude API key; a typical task costs a few cents.</p>
-          </header>
-          <div class="platforms">
-            <article class="platform" data-os="mac">
-              <h3>macOS</h3>
-              <p>Apple Silicon (M1 or later)<br>macOS 12 Monterey or later</p>
-              <a class="pill pill-dark" href="https://github.com/raman2221/doppel/releases/latest/download/Doppel-mac-arm64.dmg">Download .dmg</a>
-            </article>
-            <article class="platform" data-os="windows">
-              <h3>Windows</h3>
-              <p>Windows 10 or 11<br>64-bit</p>
-              <a class="pill pill-dark" href="https://github.com/raman2221/doppel/releases/latest/download/Doppel-windows-x64-setup.exe">Download .exe</a>
-            </article>
+        <div class="demo" data-demo="inbox" aria-label="Doppel archiving newsletters and drafting a reply">
+          <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span><span>Inbox</span><span class="demo-count" data-count>1 unread</span></div>
+          <ul class="mail">
+            <li class="noise gone"><span class="avatar">W</span><b>Weekly Digest</b><span>Your top stories this week</span></li>
+            <li class="keep"><span class="avatar a-blue">D</span><b>Dana Park</b><span>Are we still on for Thursday?</span></li>
+            <li class="noise gone"><span class="avatar">R</span><b>Receipts</b><span>Your order has shipped</span></li>
+            <li class="noise gone"><span class="avatar">S</span><b>Spring Sale</b><span>40% off ends tonight</span></li>
+          </ul>
+          <div class="compose show">
+            <div class="compose-meta">To Dana Park · Re: Thursday?</div>
+            <p class="compose-text" data-type="hey! thursday works. 6:30 at the usual place? i'll grab the table">hey! thursday works. 6:30 at the usual place? i'll grab the table</p>
+            <div class="compose-foot"><span class="countdown sent" data-countdown>Sent</span><span class="b-ghost">Cancel</span></div>
           </div>
-          <details class="first-run">
-            <summary>Opening it for the first time</summary>
-            <div class="first-run-body">
-              <p><strong>Mac:</strong> Doppel isn't notarized by Apple yet, so macOS asks before opening it. Drag Doppel to Applications and open it. If macOS blocks it, go to <em>System Settings → Privacy &amp; Security</em> and click <em>Open Anyway</em>.</p>
-              <p><strong>Windows:</strong> If SmartScreen appears, click <em>More info</em>, then <em>Run anyway</em>.</p>
-              <p>Then open <em>Settings</em> in Doppel and paste a Claude API key from <a href="https://console.anthropic.com/settings/keys">console.anthropic.com</a>.</p>
-            </div>
-          </details>
-          <p class="fine center"><a class="chevron-link" href="https://github.com/raman2221/doppel">View the source on GitHub</a> <a class="chevron-link" href="https://github.com/raman2221/doppel/releases">All releases</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature alt" id="errands">
+      <div class="wrap feature-row reverse">
+        <div class="feature-copy">
+          <p class="kicker">Errands</p>
+          <h2>It fills in the web<br>for you.</h2>
+          <p>Doppel works websites the way you do, field by field and button by button, and checks the page after every step. Passwords and payment are always left for you.</p>
+        </div>
+        <div class="demo" data-demo="browser" aria-label="Doppel filling a reservation form and stopping before the final click">
+          <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span><span class="url">reservations.example.com/lucia</span></div>
+          <div class="site">
+            <p class="site-title">Lucia · Table for 2</p>
+            <div class="field done" data-value="Fri, Nov 6 · 7:00 PM"><label>Date and time</label><span class="val">Fri, Nov 6 · 7:00 PM</span></div>
+            <div class="field done" data-value="Alex Rivera"><label>Name</label><span class="val">Alex Rivera</span></div>
+            <div class="field done" data-value="alex@example.com"><label>Email</label><span class="val">alex@example.com</span></div>
+            <div class="field locked show"><label>Account password</label><span class="val">Left for you</span></div>
+            <div class="site-foot show"><span class="fake-submit">Reserve</span><span class="chip-wait">Waiting for your OK</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" id="forms">
+      <div class="wrap feature-row">
+        <div class="feature-copy">
+          <p class="kicker">Forms</p>
+          <h2>Paperwork,<br>handled.</h2>
+          <p>Drop in a PDF and get back a filled copy from what Doppel knows about you. The original is never touched, and your SSN is never typed.</p>
+        </div>
+        <div class="demo demo-paper" data-demo="form" aria-label="Doppel filling a PDF lease application and leaving the SSN blank">
+          <div class="sheet">
+            <p class="sheet-title">Residential Lease Application</p>
+            <div class="line done" data-value="Alex Rivera"><label>Full name</label><span class="ink">Alex Rivera</span></div>
+            <div class="line done" data-value="412 Elm St, Ann Arbor, MI"><label>Current address</label><span class="ink">412 Elm St, Ann Arbor, MI</span></div>
+            <div class="line done" data-value="(734) 555-0199"><label>Phone</label><span class="ink">(734) 555-0199</span></div>
+            <div class="line done" data-value="Northside Clinic"><label>Employer</label><span class="ink">Northside Clinic</span></div>
+            <div class="line locked show"><label>Social Security No.</label><span class="ink">Left blank for you</span></div>
+          </div>
+          <div class="saved show">Saved “lease (filled).pdf”</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature alt" id="memory">
+      <div class="wrap feature-row reverse">
+        <div class="feature-copy">
+          <p class="kicker">Memory</p>
+          <h2>It remembers so<br>you don't have to.</h2>
+          <p>Birthdays, renewals, and follow-ups, with a nudge a few days ahead. A reminder can even run the task itself when it comes due.</p>
+        </div>
+        <div class="demo demo-desk" data-demo="memory" aria-label="A desktop notification about an upcoming birthday, above a list of reminders">
+          <div class="toast show">
+            <span class="logo-d logo-d-sm">D</span>
+            <div><strong>Mom's birthday is Friday</strong><span>Want me to order flowers from the usual shop?</span></div>
+          </div>
+          <ul class="dates">
+            <li class="show"><b>Fri</b><span>Mom's birthday</span><em>Family</em></li>
+            <li class="show"><b>Tue</b><span>Follow up with the landlord</span><em>Doppel will draft it</em></li>
+            <li class="show"><b>May 1</b><span>Renew car registration</span><em>Every year</em></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" id="control">
+      <div class="wrap feature-row">
+        <div class="feature-copy">
+          <p class="kicker">Control</p>
+          <h2>Always<br>your call.</h2>
+          <p>Choose how much Doppel does on its own. In every mode, payments and messages to family wait for you.</p>
+        </div>
+        <div class="demo demo-modes" data-demo="modes" aria-label="The three approval modes">
+          <div class="seg" role="tablist" aria-label="Approval modes">
+            <button role="tab" aria-selected="false" data-mode="0">Ask every time</button>
+            <button role="tab" aria-selected="true" data-mode="1">Ask before it ships</button>
+            <button role="tab" aria-selected="false" data-mode="2">Don't ask</button>
+          </div>
+          <div class="mode-rows" data-mode-rows>
+            <div class="mode-row"><span>Archive 29 newsletters</span><em data-r="0">Runs on its own</em></div>
+            <div class="mode-row"><span>Save a reminder</span><em data-r="1">Runs on its own</em></div>
+            <div class="mode-row"><span>Send a reply to Dana</span><em data-r="2" class="wait">Waits for you</em></div>
+            <div class="mode-row"><span>Pay for the order</span><em class="wait">Always waits</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small machines -->
+    <section class="light" id="light">
+      <div class="wrap">
+        <h2 class="center-title">Light enough for an<br>8 GB MacBook Air.</h2>
+        <div class="stats">
+          <div><strong>110 MB</strong><span>of memory with the window open</span></div>
+          <div><strong>3 min</strong><span>before an idle errand browser closes itself</span></div>
+          <div><strong>Native</strong><span>on Apple Silicon, from M1 up</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="safety" id="safety">
+      <div class="wrap">
+        <h2 class="center-title">Built to be trusted<br>with your life admin.</h2>
+        <div class="safety-grid">
+          <div><h3>Never types your secrets</h3><p>SSNs, passwords, and card numbers are always left for you.</p></div>
+          <div><h3>Stops at checkout</h3><p>It finds the item and fills in the details. You pay.</p></div>
+          <div><h3>30-minute undo</h3><p>Archived mail, drafts, filled forms, and reminders can all be reversed.</p></div>
+          <div><h3>A log you can verify</h3><p>Every action is chained with SHA-256, so edits can't hide.</p></div>
+          <div><h3>Keys stay in your keychain</h3><p>Encrypted by your OS and kept out of every prompt.</p></div>
+          <div><h3>Your data stays home</h3><p>Memory and history live on your computer, not ours.</p></div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="band gray" id="faq">
-      <div class="wrap narrow">
-        <header class="section-head">
-          <h2>Questions.</h2>
-        </header>
-        <div class="faq">
-          <details><summary>Is Doppel free?</summary><p>Yes. The app is free and open source. Doppel thinks with Claude, so you add your own API key and pay Anthropic directly for what you use, usually a few cents per task.</p></details>
-          <details><summary>What leaves my computer?</summary><p>Only what the current task needs is sent to Claude, like the emails you asked it to sort. Your memory, history, and activity log stay on your computer. Your keys and passwords are never included in what's sent.</p></details>
-          <details><summary>Will it send emails without asking?</summary><p>Only if you choose “Don't ask”, and even then each email shows for a few seconds so you can cancel. The default mode waits for your approval before anything leaves your computer.</p></details>
-          <details><summary>Which email providers work?</summary><p>Gmail, Outlook, iCloud, and most others that support IMAP. You connect with an app password rather than your regular password. Some school and work accounts turn app passwords off.</p></details>
-          <details><summary>Does it run on Intel Macs?</summary><p>The download is built for Apple Silicon. Intel Macs can run it from source with <code>npm install</code> and <code>npm start</code>.</p></details>
-          <details><summary>Why does my computer warn me when I open it?</summary><p>Signing an app with Apple and Microsoft costs money, and Doppel's builds aren't signed yet. The code is public on GitHub, so you can read exactly what you're running.</p></details>
+    <section class="faq" id="faq">
+      <div class="wrap wrap-narrow">
+        <h2 class="center-title">Questions</h2>
+        <details><summary>Is Doppel free?</summary><p>Yes, and it's open source. Doppel thinks with Claude, so you add your own API key and pay Anthropic directly for what you use, usually a few cents per task.</p></details>
+        <details><summary>What leaves my computer?</summary><p>Only what the current task needs is sent to Claude, like the emails you asked it to sort. Your memory, history, and activity log stay on your computer, and your keys are never sent.</p></details>
+        <details><summary>Will it send emails without asking?</summary><p>Only in “Don't ask” mode, and even then each email shows for a few seconds so you can cancel. By default, anything leaving your computer waits for you.</p></details>
+        <details><summary>Which email providers work?</summary><p>Gmail, Outlook, iCloud, and most providers with IMAP. You connect with an app password, not your regular one. Some school and work accounts turn app passwords off.</p></details>
+        <details><summary>Will it run on my older or smaller Mac?</summary><p>The download is built for Apple Silicon (M1 or later) on macOS 12 or newer, and it's tuned for 8 GB of memory. Intel Macs can run it from source.</p></details>
+        <details><summary>Why does my computer warn me the first time?</summary><p>The builds aren't signed with Apple or Microsoft yet. On a Mac, open System Settings → Privacy &amp; Security and click Open Anyway. On Windows, click More info, then Run anyway. The code is public, so you can see exactly what you're running.</p></details>
+      </div>
+    </section>
+
+    <!-- Closing band -->
+    <section class="closing" id="get">
+      <div class="closing-sky" aria-hidden="true"></div>
+      <div class="wrap closing-inner">
+        <h2>Hand off your next errand.<br><span>Get Doppel for free.</span></h2>
+        <div class="downloads">
+          <a class="btn btn-blue btn-lg" data-os="mac" href="https://github.com/raman2221/doppel/releases/latest/download/Doppel-mac-arm64.dmg">Download for Mac</a>
+          <a class="btn btn-white btn-lg" data-os="windows" href="https://github.com/raman2221/doppel/releases/latest/download/Doppel-windows-x64-setup.exe">Download for Windows</a>
         </div>
+        <p class="closing-fine">Mac: Apple Silicon, macOS 12+ · Windows 10 or 11, 64-bit · Needs a Claude API key from <a href="https://console.anthropic.com/settings/keys">console.anthropic.com</a></p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap footer-inner">
-      <span class="logo logo-small"><span class="mark mark-sm" aria-hidden="true"><i></i><i></i></span>Doppel</span>
-      <nav aria-label="Footer">
-        <a href="https://github.com/raman2221/doppel">GitHub</a>
-        <a href="https://github.com/raman2221/doppel/releases">Releases</a>
-        <a href="https://github.com/raman2221/doppel/issues">Report a problem</a>
-      </nav>
-      <p>© 2026 Ramanjeet Singh. Doppel uses Claude by Anthropic and isn't affiliated with Anthropic, Apple, or Microsoft.</p>
+    <div class="wrap footer-grid">
+      <div class="footer-brand"><span class="logo-d">D</span><p>Your second you.</p></div>
+      <div><h4>Product</h4><a href="#get">Download</a><a href="https://github.com/raman2221/doppel/releases">Releases</a><a href="#safety">Safety</a></div>
+      <div><h4>Open source</h4><a href="https://github.com/raman2221/doppel">Source code</a><a href="https://github.com/raman2221/doppel#readme">Docs</a><a href="https://github.com/raman2221/doppel/issues">Report a problem</a></div>
+      <p class="footer-legal">© 2026 Ramanjeet Singh. Doppel uses Claude by Anthropic and isn't affiliated with Anthropic, Apple, or Microsoft.</p>
     </div>
   </footer>
 
